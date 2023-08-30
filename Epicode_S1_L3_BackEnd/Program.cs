@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
+using System.IO;
+using System.Security.Principal;
 
 namespace Epicode_S1_L3_BackEnd
 {
@@ -67,13 +70,9 @@ namespace Epicode_S1_L3_BackEnd
                 return saldo;
             }
 
-            public void Conto1()
-            {
-
-            }
-
             static void Main(string[] args)
             {
+                Console.WriteLine("++++ESERCIZIO 1 CONTO CORRENTE++++");
                 Console.WriteLine("++++CONTO 1 CON 1500 EURO INIZIALI++++");
                 ContoCorrente Conto1 = new ContoCorrente();
                 Conto1.ApriConto(1500);
@@ -101,7 +100,65 @@ namespace Epicode_S1_L3_BackEnd
                 Conto3.Preleva(300);
                 decimal Saldo3 = Conto3.GetSaldo();
                 Console.WriteLine($"Saldo attuale: {Saldo3} euro");
-                Console.WriteLine("++++CONTO 2 CON 500 EURO INIZIALI++++");
+                Console.WriteLine("++++CONTO 3 CON 500 EURO INIZIALI++++");
+                Console.WriteLine("++++ESERCIZIO 1 CONTO CORRENTE++++");
+                Console.ReadLine();
+
+
+
+                Console.WriteLine("++++ESERCIZIO 2 CON ARRAY NOMI++++");
+                Console.WriteLine("Quanti nomi vuoi inserire (numero):");
+                int numeroNomi = int.Parse(Console.ReadLine());
+                string[] nomi = new string[numeroNomi];
+                Console.WriteLine("Inserisci i nomi:");
+                for (int i = 0; i < nomi.Length; i++)
+                {
+                    nomi[i] = Console.ReadLine();
+                }
+                Console.WriteLine("Qual'è il nome che vuoi verificare?:");
+                string nome = Console.ReadLine();
+                bool presente = false;
+                for (int i = 0; i < nomi.Length; i++)
+                {
+                    if (nome == nomi[i])
+                    {
+                        presente = true;
+                        break;
+                    }
+                }
+                if (presente)
+                {
+                    Console.WriteLine($"Il nome {nome} è presente nella lista");
+                }
+                else
+                {
+                    Console.WriteLine("Il nome non è presente in lista");
+                }
+                Console.WriteLine("++++ESERCIZIO 2 CON ARRAY NOMI++++");
+                Console.ReadLine();
+
+
+
+                Console.WriteLine("++++ESERCIZIO 3 CON ARRAY NUMERI++++");
+                Console.WriteLine("Quanti numeri vuoi inserire (numero):");
+                int numeroNumeri = int.Parse(Console.ReadLine());
+                int[] numeri = new int[numeroNumeri];
+                Console.WriteLine("Inserisci i numeri:");
+                for (int i = 0; i < numeri.Length; i++)
+                {
+                    numeri[i] = int.Parse(Console.ReadLine());
+                }
+                decimal somma = 0;
+                decimal media = 0;
+                foreach (int numero in numeri) 
+                {
+                    somma += numero;
+
+                    media = somma / numeroNumeri;
+                }
+                Console.WriteLine($"La somma dei numeri è: {somma}");
+                Console.WriteLine($"La media dei numeri è: {media}");
+                Console.WriteLine("++++ESERCIZIO 3 CON ARRAY NUMERI++++");
                 Console.ReadLine();
             }
         }
